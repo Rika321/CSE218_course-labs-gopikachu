@@ -1,0 +1,39 @@
+apply plugin: 'com.android.library'
+
+buildscript {
+    repositories {
+        jcenter()
+        google()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.1'
+    }
+}
+
+dependencies {
+
+    compile 'com.android.support:appcompat-v7:28.0.0'
+    compile "com.android.support:support-v4:28.0.0"
+    compile "com.google.android.gms:play-services-games:17.0.0"
+    compile "com.google.android.gms:play-services-plus:16.0.0"
+}
+
+android {
+    defaultConfig {
+        minSdkVersion 4
+    }
+
+    // Set defaults so that BaseGameUtils can be used outside of BasicSamples
+    if (!project.hasProperty('android_compile_version')) {
+        ext.android_compile_version = 28
+    }
+    if (!project.hasProperty('android_version')) {
+        ext.android_version = '28'
+    }
+
+    compileSdkVersion android_compile_version
+    buildToolsVersion android_version
+    buildToolsVersion '28.0.3'
+}
+
